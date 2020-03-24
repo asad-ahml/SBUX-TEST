@@ -1,0 +1,6 @@
+.vs/
+MSTESTUI/
+packages/
+UI-E2E/bin/*
+UI-E2E/obj/*
+

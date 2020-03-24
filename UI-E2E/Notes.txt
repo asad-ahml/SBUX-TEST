@@ -1,0 +1,33 @@
+﻿QUESTIONS FOR SATYA: (03/22)
+1) I created a test mthod "public void VerifyOurCoffeeLink()" I was trying verify that on starbucks page there is a link
+called "Our Coffee". When I run the test, the test fails and I get error message "Link not found"
+
+2) I was trying to first login and when logged in, place orders. I created test method " public void PlaceOrder()"
+When I execute the test, it logs in but it does not take me to logged in page where I can place order.
+
+3) I have manually logged in and collected the web elements of some items. I want to write a test, that logs me in, 
+place order of two items. Need Help.
+
+4) My goal is to write few tests, such as a) place breakfast order b) ensure few links are present of page,
+c) functionality such as login works. Once I am done with these test cases, I want to write those tests in specsflow.
+
+
+NOTES:
+To finish chrome.exe in task manager using cmd
+taskkill /im chrome.exe /f
+
+To finish chromedriver.exe
+taskkill /im chromedriver.exe /f
+
+<a is a hyperlink
+When searching for attribute use @ otherwise no need to search using @
+
+
+
+NEED TO TAKE SEPERATE SESSIONS:
+Need to take seperate session on Wait
+Need to take class on GitHub
+
+
+PRACTICE:
+Practice various types of xpath & document them
