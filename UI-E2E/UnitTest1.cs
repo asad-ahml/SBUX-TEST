@@ -33,8 +33,8 @@ namespace UI_E2E
             Assert.IsTrue(actualUrl.Equals(expectedUrl), "URL Doesnt Match");
             driver.Close();
             driver.Quit();
-
         }
+
         //[TestMethod]
         public void WhenClickSignIn_ThenVerifyLinkForgotYourUserName()
         {
@@ -59,8 +59,19 @@ namespace UI_E2E
             Assert.IsTrue(actualForgotYourPassword.Equals(expectedForgotYourPassword), "Forgot Your Password Link No Found on Page");
             driver.Close();
             driver.Quit();
+        }
 
-
+        //[TestMethod]
+        public void VerifyOurCoffeeLink()
+        {
+            ChromeDriver driver = new ChromeDriver(@"C:\Users\AHML\source\repos\SBUX-E2E\MSTESTUI");
+            driver.Navigate().GoToUrl("https://www.starbucks.com/");
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            IWebElement link = driver.FindElement(By.XPath("//*[@id='caretExpander1']//a[text()='Our Coffee']"));
+            Assert.IsNotNull(link, "The link Our Cofee was found");
+            driver.Close();
+            driver.Quit();
+            //IWebElement link = driver.FindElement(By.XPath("//*[@id='caretExpander1']")).FindElement(By.LinkText("Our Coffee"));
         }
 
         //[TestMethod]
@@ -74,12 +85,11 @@ namespace UI_E2E
             driver.FindElement(By.XPath("//button[@data-e2e='signInButton']")).Click();
             driver.Close();
             driver.Quit();
-
         }
 
         [TestMethod]
 
-        public void PlaceOrder()
+        public void WhenUserAddsAnItemToShoppingBag()
         {
             ChromeDriver driver = new ChromeDriver(@"C:\Users\AHML\source\repos\SBUX-E2E\MSTESTUI");
             driver.Navigate().GoToUrl("https://www.starbucks.com/");
@@ -93,37 +103,16 @@ namespace UI_E2E
             driver.FindElement(By.XPath("//*[@data-e2e='Hot Coffees']")).Click();
             driver.FindElement(By.XPath("//*[@data-e2e='Pike Place® Roast']")).Click();
             driver.FindElement(By.XPath("//*[@data-e2e='add-to-order-button']")).Click();
-            driver.FindElement(By.XPath("//a[text()='Menu']")).Click();
-            driver.FindElement(By.XPath("//*[text()='Food']/following-sibling::ul//*[text()='Bakery']")).Click();
-            
-
-        }
-        //[TestMethod]
-        public void VerifyOurCoffeeLink()
-        {
-            ChromeDriver driver = new ChromeDriver(@"C:\Users\AHML\source\repos\SBUX-E2E\MSTESTUI");
-            driver.Navigate().GoToUrl("https://www.starbucks.com/");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            IWebElement link =  driver.FindElement(By.XPath("//*[@id='caretExpander1']//a[text()='Our Coffee']"));
-            Assert.IsNotNull(link, "The link Our Cofee was found");
+            //driver.FindElement(By.XPath("//a[text()='Menu']")).Click();
+            //driver.FindElement(By.XPath("//*[text()='Food']/following-sibling::ul//*[text()='Bakery']")).Click();
             driver.Close();
             driver.Quit();
-
-            //IWebElement link = driver.FindElement(By.XPath("//*[@id='caretExpander1']")).FindElement(By.LinkText("Our Coffee"));
+   
         }
+        
 
 
-        // WEB ELEMENTS (TO PLACE ORDER FOR BREAKFAST)
-        //  ORDER   ("//a[@data-e2e='orderHamburgerNavPushViewBtn']")
-        //  HOT COFFEES  ("//*[@data-e2e="Hot Coffees"]")
-        //  PIKE PLACE ROAST (//*[@data-e2e="Pike Place® Roast"])
-        //  ADD TO ORDER BUTTON (//*[@data-e2e="add-to-order-button"])
-        //  ADD ORDER COUNT (//*[@data-e2e="cart-order-count"])
-        //  BAKERY (//*[@data-e2e='Bakery'])
-        //  PLAIN BAGEL (//*[@data-e2e="Plain Bagel"])
-        //  CHOOSE A STORE (//*[@data-e2e="crust"])
-        //  FIND A STORE (//*[@data-e2e="searchTermInput"])
-
+        
 
 
         //[TestInitialize] //annotation or binding or attributes

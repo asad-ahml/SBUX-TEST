@@ -31,3 +31,8 @@ Need to take class on GitHub
 
 PRACTICE:
 Practice various types of xpath & document them
+X-Path can be found by 
+1) Finding the Parent and then going down to the child folder
+2) Can also be found by using text [text() = 'text']
+3) Can also be found by focusing on sibling of the given folder 
+EXAMPLE: ("//*[text()='Food']/following-sibling::ul//*[text()='Bakery']") 
