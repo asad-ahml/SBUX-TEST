@@ -8,31 +8,31 @@ namespace UI_E2E
     [TestClass]
     public class UnitTest1
     {
-        ChromeDriver driver;
+       static  ChromeDriver driver;
 
-       // [TestMethod]
+        [TestMethod]
         public void VerifyPageTitle()
         {
  
-            ChromeDriver driver = new ChromeDriver(@"C:\Users\AHML\source\repos\SBUX-E2E\MSTESTUI");
-            driver.Navigate().GoToUrl("https://www.starbucks.com/");
+            //ChromeDriver driver = new ChromeDriver(@"C:\Users\AHML\source\repos\SBUX-E2E\MSTESTUI");
+            //driver.Navigate().GoToUrl("https://www.starbucks.com/");
             var actualPageTitle = driver.Title;
             var expectedPageTitle = "Starbucks Coffee Company";
             Assert.IsTrue(actualPageTitle.Equals(expectedPageTitle),"Title Does Not Match");
-            driver.Close();
-            driver.Quit();
+            //driver.Close();
+            //driver.Quit();
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void VerifyPageUrl()
         {
-            ChromeDriver driver = new ChromeDriver(@"C:\Users\AHML\source\repos\SBUX-E2E\MSTESTUI");
-            driver.Navigate().GoToUrl("https://www.starbucks.com/");
+            //ChromeDriver driver = new ChromeDriver(@"C:\Users\AHML\source\repos\SBUX-E2E\MSTESTUI");
+            //driver.Navigate().GoToUrl("https://www.starbucks.com/");
             string actualUrl = driver.Url;
             string expectedUrl = "https://www.starbucks.com/";
             Assert.IsTrue(actualUrl.Equals(expectedUrl), "URL Doesnt Match");
-            driver.Close();
-            driver.Quit();
+            //driver.Close();
+            //driver.Quit();
         }
 
         //[TestMethod]
@@ -87,7 +87,7 @@ namespace UI_E2E
             driver.Quit();
         }
 
-        [TestMethod]
+       // [TestMethod]
 
         public void WhenUserAddsAnItemToShoppingBag()
         {
@@ -109,23 +109,29 @@ namespace UI_E2E
             driver.Quit();
    
         }
-        
+        [ClassInitialize]
+        public static void BeforeAllTests(TestContext testContext)
+        {
+            driver = new ChromeDriver();           
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.Manage().Window.Maximize();
+        }
 
+        [ClassCleanup]
+        public static void AfterAllTests()
+        {
+            driver.Close();
+            driver.Quit();
+        }
 
-        
+        [TestInitialize]
+        public void BeforeEachTest()
+        {
+            driver.Navigate().GoToUrl("https://www.starbucks.com/");
 
+        }
 
-        //[TestInitialize] //annotation or binding or attributes
-        //public  void TearDown()
-        //{
-        //    driver.Close();
-        //    driver.Quit();
-        //}
-        //[TestCleanup]
-        //public  void SetUp()
-        //{
-        //     driver = new ChromeDriver(@"C:\Users\AHML\source\repos\SBUX-E2E\MSTESTUI");//Launching the browser
-        //}
+                      
     }
 }
 
